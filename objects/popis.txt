@@ -1,0 +1,85 @@
+end-to-end simulacia / validacia
+
+picking ma protokol do robota
+bridge, aby moj program komunikoval s nasim protokolom
+use case: testovanie celeho pickingu bez robota, kamier, picking ale nevie, ze pracuje so simulatorom
+treba vracat fotky, ked sa zavola trigger
+dostanem trajektorie, aplikujem
+statistika uspesnosti chyteni / picknuti, grafy, report
+
+validacia toho, co najde matcher voci ground truth zo simulacie
+
+3 casti:
+komunikacna vrstva, simulovanie kamier atd.
+pustanie simulatora a generovanie scen
+generovanie reportov, validacia pickingu, chyby
+
+
+vyrobim scenu, robota, objekty
+poslem STRT
+obrdzim ack
+prejdem robotom na fotiacu poziciu
+poslem TRIG
+
+
+3D roboticke simulatory:
+
+Webots:
+https://cyberbotics.com/
+Robot may be programmed in C, C++, Python, Java, MATLAB or ROS with a simple API covering all the basic robotics needs.
+
+Unity:
+https://unity.com/solutions/automotive-transportation-manufacturing/robotics
+https://github.com/Unity-Technologies/Unity-Robotics-Hub
+C#
+
+Gazebo:
+https://gazebosim.org/home
+C++
+
+RoboDK:
+https://robodk.com/
+Python, C#, Matlab
+
+
+https://realpython.com/python-sockets/
+
+
+calib.json - matice P1, P2:
+[ 2.3759839459047848e+03, 0.0, 1.1667410125732422e+03, 0.0,
+ 0.0, 2.3759839459047848e+03, 1.0313716430664062e+03, 0.0,
+ 0.0, 0.0, 1.0, 0.0 ]
+ohniskove vzdialenosti aj principal point su v pixeloch 
+
+petr stourac ma model svetla, musim vyrobit cca 22 zdrojov svetla, nastavit uhol, v ktorom sa vyzaruje svetlo, IES profile light
+tiez ma model gripperu (na aktivit)
+
+
+https://graphics.pixar.com/usd/dev/api/usd_render_page_front.html
+The camera has additional attributes to bound the frustum, the volume of space viewed in the image. These attributes include the near and far clipping range, as well as optional additional clipping planes. The camera also specifies an aperture, which bounds the x and y axes of screen space. The aperture is specified in view coordinates using the same units as focal length (typically, millimeters). For a perspective projection, the aperture describes an axis-aligned rectangle in the plane sitting at the focal length in front of the camera origin:
+https://graphics.pixar.com/usd/dev/api/usd_lux_page_front.html
+
+
+https://docs.omniverse.nvidia.com/app_create/prod_extensions/ext_physics.html
+Min Simulation Frame Rate
+Sets the minimum simulation update rate in Hertz with respect to render-frame updates. In general, the Physics simulation runs in real (wall) time, so if rendering is slow, the simulation may take many steps at Time Steps Per Second to keep the Physics simulation state synchronized with wall time. This parameter limits how many steps the simulation may take to keep up synchronization. For example, if Min Simulation Frame Rate is 30Hz and the PhysicsScene Time Steps Per Second is 60 (Hz), the simulation takes at most two steps between render frame updates, no matter how long a frame render takes. This is a useful parameter when rendering a Physics scene to keep the simulation updates in lockstep with rendering: Just set Min Simulation Frame Rate equal to the Time Steps Per Second value.
+
+
+zmenit Min Simulation Frame Rate a vyskusat casovanie pred a po
+pridat parametre optical centre a width height pre fisheye kameru
+
+
+
+prehladova kapitola:
+prehlad simulatorov
+k comu to ma sluzit, popisat problem
+realne je to neprakticke, vznikaju chyby, simulacie sa daju vyuzit,
+existuju nejake dostupne moznosti
+preco sme zvolili (volne dostupne, podpora GPU, fyzikalna simulacia, ray tracing)
+Karel a Filip maju diplomky zo Sanezoo
+technicke dokumentacie simulatorov - objektivnejsie
+prehladovy paper = clanok simulatorov
+
+my - autorsky plural
+
+6-osy robot, definovat a popisat inverznu kinematiku
